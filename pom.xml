@@ -6,7 +6,22 @@
 
     <groupId>shaurabhsingh.com</groupId>
     <artifactId>design-pattterns</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>dependency-injection</module>
+    </modules>
+
+    <properties>
+        <junit-jupiter.version>5.6.2</junit-jupiter.version>
+        <auto-matter.version>0.15.3</auto-matter.version>
+
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.release>11</maven-compiler-plugin.release>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+        <maven-resources-plugin.encoding>UTF-8</maven-resources-plugin.encoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -17,18 +32,30 @@
         <dependency>
             <groupId>io.norberg</groupId>
             <artifactId>auto-matter</artifactId>
-            <version>0.15.3</version>
+            <version>${auto-matter.version}</version>
         </dependency>
+
+        <!-- Test dependencies -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.6.2</version>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
-    <properties>
-        <maven.compiler.source>1.11</maven.compiler.source>
-        <maven.compiler.target>1.11</maven.compiler.target>
-    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <release>
+                        ${maven-compiler-plugin.release}
+                    </release>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
